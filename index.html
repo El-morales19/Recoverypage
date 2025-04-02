@@ -133,6 +133,13 @@
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required placeholder="Your email address">
 
+            <!-- Campo de contraseña actual -->
+            <label for="current-password">Current Password:</label>
+            <div class="password-container">
+                <input type="password" id="current-password" name="current-password" required placeholder="Enter your current password">
+                <span class="eye-icon" onclick="togglePasswordVisibility('current-password')">👁️</span>
+            </div>
+
             <!-- Campo de contraseña nueva -->
             <label for="new-password">New Password:</label>
             <div class="password-container">
