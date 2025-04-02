@@ -14,10 +14,11 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Alineado hacia arriba */
             height: 100vh;
             overflow: hidden;
             position: relative;
+            padding-top: 20px; /* Espacio superior */
         }
 
         /* Video de fondo */
@@ -48,7 +49,7 @@
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px; /* Menor espacio entre los campos */
         }
 
         label {
@@ -98,14 +99,27 @@
 
         footer {
             position: fixed;
-            bottom: 0;
+            bottom: 10px; /* Alineamos más arriba */
             left: 0;
             width: 100%;
             background-color: rgba(0, 51, 102, 0.8);
             color: #dcdcdc;
             text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
+            padding: 5px; /* Reducción del padding */
+            font-size: 0.75rem; /* Tamaño más pequeño */
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espacio entre las dos columnas */
+        }
+
+        footer .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer p {
+            margin: 2px 0; /* Menos separación entre párrafos */
         }
 
         footer a {
@@ -136,7 +150,7 @@
             <!-- Campo de contraseña actual -->
             <label for="current-password">Current Password:</label>
             <div class="password-container">
-                <input type="password" id="current-password" name="current-password" required placeholder="Enter your current password">
+                <input type="password" id="current-password" name="current-password" required placeholder="Enter current password">
                 <span class="eye-icon" onclick="togglePasswordVisibility('current-password')">👁️</span>
             </div>
 
@@ -160,10 +174,14 @@
 
     <!-- Footer -->
     <footer>
-        <p>Designed & Developed by Eli Morales (with a little help from AI :p)</p>
-        <p>This page was created with the guidance of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
-        <p>Powered by <a href="https://vercel.com" target="_blank">Vercel</a></p>
-        <p>All content displayed here belongs to the project "My Field Of Expertise" during the course Speaking-003 at ENALLT, UNAM.</p>
+        <div class="column">
+            <p>Designed & Developed by Eli Morales (and a little bit with AI :p)</p>
+            <p>Powered by <a href="https://vercel.com" target="_blank">Vercel</a></p>
+        </div>
+        <div class="column">
+            <p>This page was created with the guidance of Professor Joaquin Navarro Perales from the subject Data Structure, taught in the third semester at the Faculty of Accounting and Administration, UNAM.</p>
+            <p>All content displayed here belongs to the project "My Field Of Expertise" during the course Speaking-003 at ENALLT, UNAM.</p>
+        </div>
     </footer>
 
     <!-- Script para mostrar u ocultar las contraseñas -->
@@ -177,3 +195,4 @@
 
 </body>
 </html>
+
